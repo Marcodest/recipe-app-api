@@ -12,7 +12,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-import statistics
+from django.conf.urls.static import static
 from django.conf import settings
 from drf_spectacular.views import (
     SpectacularAPIView,
@@ -39,7 +39,7 @@ urlpatterns = [
 
 # serving files in debug mode
 if settings.DEBUG:
-    urlpatterns += statistics(
+    urlpatterns += static(
         settings.MEDIA_URL,
         document_root=settings.MEDIA_ROOT,
     )
