@@ -142,6 +142,7 @@ STATIC_ROOT = '/vol/web/static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# all the user model are using the autentication in user
 AUTH_USER_MODEL = 'core.User'
 
 REST_FRAMEWORK = {

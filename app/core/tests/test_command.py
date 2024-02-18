@@ -10,10 +10,12 @@ from django.db.utils import OperationalError
 from django.test import SimpleTestCase
 
 
+# check is comming from BaseCommand
 @patch('core.management.commands.wait_for_db.Command.check')
 class CommandTests(SimpleTestCase):
     """Test commands."""
 
+# The patch is adding a new argument to each functions
     def test_wait_for_db_ready(self, patched_check):
         """Test waiting for database if database ready."""
         # Return true when the command is called

@@ -1,3 +1,4 @@
+# Exclude files that docker does not have to consider
 # Git
 .git
 .gitignore

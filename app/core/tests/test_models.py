@@ -21,6 +21,13 @@ class ModelTests(TestCase):
         """Test creating a user with an email is successful."""
         email = 'test@example.com'
         password = 'testpass123'
+        # If you reference User directly (for example, by referring to it in a
+        # foreign key),
+        # your code will not work in projects where the AUTH_USER_MODEL setting
+        # has been changed
+        # to a different user model.
+
+        # ".objects" is a reference to the UserManager
         user = get_user_model().objects.create_user(
             email=email,
             password=password,

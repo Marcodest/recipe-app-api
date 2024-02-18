@@ -1,6 +1,7 @@
 FROM python:3.9-alpine3.13
 LABEL maintainer="londonappdeveloper.com"
 
+# Tell python you do no want to buffer the output
 ENV PYTHONUNBUFFERED 1
 
 COPY ./requirements.txt /tmp/requirements.txt
@@ -11,6 +12,8 @@ WORKDIR /app
 EXPOSE 8000
 
 ARG DEV=false
+
+# Using one run is creating one one layer and this keep the image light
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     apk add --update --no-cache postgresql-client jpeg-dev && \
@@ -32,6 +35,7 @@ RUN python -m venv /py && \
     chmod -R 755 /vol && \
     chmod -R +x /scripts
 
+# Create a virtual enviroment in the Docker image
 ENV PATH="/scripts:/py/bin:$PATH"
 
 USER django-user
